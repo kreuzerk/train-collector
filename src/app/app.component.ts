@@ -8,20 +8,25 @@
  * @since 23.10.2015, 2015.
  */
 import { Component } from 'angular2/core';
+import {TrainCapture} from './components/train-capture/train-capture.component';
 
 @Component({
     selector: 'app',
     template: `
-   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <a class="navbar-brand">Train Collector</a>
+        </div>
+    </nav>
     <div class="container-fluid">
         <div class="jumbotron">
             <div class="row">
-                <h1>Hallo</h1>
+                <train-capture></train-capture>
             </div>
         </div>
     </div>
-    </nav>
   `
+  , directives: [ TrainCapture ]
 })
 export class AppComponent {
 }
