@@ -13,7 +13,7 @@ import {TrainCapture} from './components/train-capture/train-capture.component';
 @Component({
     selector: 'app',
     template: `
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-default">
         <div class="container-fluid">
             <a class="navbar-brand">Train Collector</a>
         </div>
