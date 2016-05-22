@@ -1,5 +1,6 @@
 import {Component} from 'angular2/core';
 import {TrainService, Train} from '../service/train.service';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
     selector: 'train-list',
@@ -8,13 +9,15 @@ import {TrainService, Train} from '../service/train.service';
             <div class="row" *ngFor="#train of trains">
                 {{ train.departure }} {{ train.destination }}
             </div>
-    `,
-    providers: [TrainService]
+    `
 })
 export class TrainList{
-    trains: Array<Train>;
+    
+    trains: Array<Train> = [];
     
     constructor(private trainService: TrainService){
-        this.trains = trainService.getTrains();
+        this.trainService.trainsStream.subscribe((train) => {
+            this.trains.push(train);
+        })
     }
 } 

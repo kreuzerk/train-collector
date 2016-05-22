@@ -1,28 +1,30 @@
+import { Injectable } from 'angular2/core';
+import { Subject } from 'rxjs/Subject';
+
 export interface Train{
     departure: string,
     destination: string
 }
 
+@Injectable()
 export class TrainService {
     
-    trains: Array<Train> = [];
+    private trains = new Subject<Train>();
+    trainsStream = this.trains.asObservable();
     
     constructor() {
+        /*
         this.trains.push({departure: 'Bern', destination: 'Brig'});
         this.trains.push({departure: 'Bern', destination: 'Zürich'});
+        */
     }
     
-    getTrains() : Array<Train> {
-        return this.trains;
+    getTrains() : any {
+        return this.trainsStream;
     }
     
     addNewTrain(train: Train): void{
-        this.trains.push(train);
-        console.log('Hinzugefügte Züge', this.trains);
-    }
-    
-    popTrain(){
-        this.trains.pop();
-        console.log('Gepööpt', this.trains);
+        this.trains.next(train);
+        console.log('added', this.trains)
     }
 }

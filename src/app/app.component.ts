@@ -10,6 +10,7 @@
 import { Component } from 'angular2/core';
 import {TrainCapture} from './components/train-capture/train-capture.component';
 import {TrainList} from './components/train-list/train-list.component';
+import {TrainService} from './components/service/train.service';
 
 @Component({
     selector: 'app',
@@ -32,7 +33,8 @@ import {TrainList} from './components/train-list/train-list.component';
         </div>
     </div>
   `
-  , directives: [ TrainCapture, TrainList ]
+  , directives: [ TrainCapture, TrainList ],
+  providers: [TrainService]
 })
 export class AppComponent {
 }
