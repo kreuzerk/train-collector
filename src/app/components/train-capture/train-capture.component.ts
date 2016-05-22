@@ -24,14 +24,6 @@ import {TrainService} from '../service/train.service';
             <button [disabled]="!trainForm.valid" type="submit" class="btn btn-primary top-buffer">Zug erfassen</button>
         </form>
     </div>
-    <div class="row">
-        <ul>
-            <li *ngFor="#train of trains">
-                {{ train.departure }} {{ train.destination }}
-            </li>
-        </ul>
-    </div>
-    <button class="btn btn-danger" (click)="popTrain()">Pöööp</button>
     `,
     styles: [`
         .top-buffer{
@@ -69,9 +61,5 @@ export class TrainCapture{
             destination: this.destination.value,
             departure: this.departure.value   
         })
-    }
-    
-    popTrain(): void{
-        this.trainService.popTrain();
     }
 }
