@@ -1,4 +1,4 @@
-interface Train{
+export interface Train{
     departure: string,
     destination: string
 }
