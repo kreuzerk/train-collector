@@ -11,7 +11,7 @@ import {TrainService, Train} from '../service/train.service';
                 </h3>
             </div>
             <div class="panel-body">
-                Panel content
+                {{ train.description }}
             </div>
         </div>
     `

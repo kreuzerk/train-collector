@@ -21,6 +21,13 @@ import {TrainService} from '../service/train.service';
             <div *ngIf="destination.dirty && destination.hasError('required')">
                     Bitte gib einen Zielort ein
             </div>
+            <div class="input-group top-buffer">
+                <span class="input-group-addon addon-custom">Beschreibung</span>
+                <input type="text" class="form-control" ngControl="description" placeHolder="Beschreibung">
+            </div>
+            <div *ngIf="description.dirty && description.hasError('required')">
+                    Bitte gib eine Beschreibung ein
+            </div>
             <button [disabled]="!trainForm.valid" type="submit" class="btn btn-primary top-buffer">Zug erfassen</button>
         </form>
     </div>
@@ -30,10 +37,10 @@ import {TrainService} from '../service/train.service';
             margin-top: 10px;   
         }
         .input-group-addon {
-            min-width:80px;
+            min-width:150px;
         }
         .input-group{
-            width: 300px;
+            width: 500px;
         }
     `]
 })
@@ -42,14 +49,17 @@ export class TrainCapture{
     trainForm: ControlGroup;
     departure: Control;
     destination: Control;
+    description: Control;
     trains: Array<any>;
     
     constructor(private _fb: FormBuilder, private trainService: TrainService){
         this.departure = _fb.control('', Validators.required);
         this.destination = _fb.control('', Validators.required);
+        this.description = _fb.control('', Validators.required);
         this.trainForm = _fb.group({
             departure: this.departure,
-            destination: this.destination
+            destination: this.destination,
+            description: this.description
         })
         
         this.trains = this.trainService.getTrains();
@@ -58,7 +68,8 @@ export class TrainCapture{
     addNewTrain(){
         this.trainService.addNewTrain({
             destination: this.destination.value,
-            departure: this.departure.value   
+            departure: this.departure.value,
+            description: this.description.value;   
         })
     }
 }
