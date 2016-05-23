@@ -1,7 +1,8 @@
 export interface Train{
     departure: string,
     destination: string,
-    description: string
+    description: string,
+    imageUrl: string
 }
 
 export class TrainService {
@@ -9,8 +10,18 @@ export class TrainService {
     trains: Array<Train> = [];
     
     constructor() {
-        this.trains.push({departure: 'Bern', destination: 'Brig', description: 'Test'});
-        this.trains.push({departure: 'Bern', destination: 'Zürich', description: 'Test2'});
+        this.trains.push({
+            departure: 'Bern', 
+            destination: 'Brig', 
+            description: 'Test',
+            imageUrl: 'http://img.winfuture.de/teaser/660/6544.jpg'
+        });
+        this.trains.push({
+            departure: 'Bern', 
+            destination: 'Zürich', 
+            description: 'Test2',
+            imageUrl: 'http://files.newsnetz.ch/story/1/7/5/17590187/7/topelement.jpg' 
+       });
     }
     
     getTrains() : Array<Train> {

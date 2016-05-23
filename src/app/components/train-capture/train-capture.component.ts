@@ -46,6 +46,14 @@ import {TrainService} from '../service/train.service';
 })
 export class TrainCapture{
     
+    imageUrls: Array<string> = [
+        'http://www.handelszeitung.ch/sites/handelszeitung.ch/files/imagecache/popover-teaser/image_gallery/o_sbb_bombardier_fv_dosto.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/c/c0/SBB_Re_450_in_Z%C3%BCrich.jpg',
+        'http://www.bahnbilder.de/bilder/sbb-re-460-095-3-286033.jpg',
+        'http://img.winfuture.de/teaser/660/6544.jpg',
+        'http://files.newsnetz.ch/story/1/7/5/17590187/7/topelement.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/0/03/FLIRT_Badischer_Bahnhof.JPG'
+    ];
     trainForm: ControlGroup;
     departure: Control;
     destination: Control;
@@ -66,10 +74,12 @@ export class TrainCapture{
     }
     
     addNewTrain(){
+        let randomNumber =  Math.round(Math.random()*6)
         this.trainService.addNewTrain({
             destination: this.destination.value,
             departure: this.departure.value,
-            description: this.description.value;   
+            description: this.description.value,
+            imageUrl: this.imageUrls[randomNumber]   
         })
     }
 }
