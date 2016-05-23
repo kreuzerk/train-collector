@@ -35,8 +35,7 @@ import {TrainService} from '../service/train.service';
         .input-group{
             width: 300px;
         }
-    `],
-    providers: [TrainService]
+    `]
 })
 export class TrainCapture{
     

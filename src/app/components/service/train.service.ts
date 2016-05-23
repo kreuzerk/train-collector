@@ -18,11 +18,9 @@ export class TrainService {
     
     addNewTrain(train: Train): void{
         this.trains.push(train);
-        console.log('Hinzugefügte Züge', this.trains);
     }
     
-    popTrain(){
-        this.trains.pop();
-        console.log('Gepööpt', this.trains);
+    deleteTrain(index: number): void{
+        this.trains.splice(index, 1);
     }
 }
