@@ -1,5 +1,5 @@
 import {Component, Input} from 'angular2/core';
-import {TrainService, Train} from '../service/train.service';
+import {TrainService, Train} from '../../service/train.service';
 
 @Component({
     selector: 'train',
@@ -11,19 +11,21 @@ import {TrainService, Train} from '../service/train.service';
                 </h3>
             </div>
             <div class="panel-body">
-                <a href="#">
                 <img src="{{train.imageUrl}}" class="thumbnail img-responsive">
-                </a>
-                {{ train.description }}
             </div>
+            <div class="panel-footer">"{{ train.description }}"</div>
         </div>
     `,
     styles: [`
         img{
-            min-width: 242pt;
+            min-width: 250pt;
             min-height: 170pt;
-            max-width: 242pt;
+            max-width: 250pt;
             max-height: 170pt;
+            margin: 0 auto;
+        }
+        .panel-footer{
+            font-family: Georgia Italic
         }
     `]
 })

@@ -1,6 +1,6 @@
 import {Component} from 'angular2/core';
 import {FormBuilder, ControlGroup, Control, Validators} from 'angular2/common';
-import {TrainService} from '../service/train.service';
+import {TrainService} from '../../service/train.service';
 
 @Component({
     selector: 'train-capture',
@@ -11,21 +11,21 @@ import {TrainService} from '../service/train.service';
                 <span class="input-group-addon addon-custom">Von</span>
                 <input type="text" class="form-control" ngControl="departure" placeHolder="Von">
             </div>
-            <div *ngIf="departure.dirty && departure.hasError('required')">
+            <div class="missingInput" *ngIf="departure.dirty && departure.hasError('required')">
                     Bitte gib ein Abfahrtsort ein
             </div>
             <div class="input-group top-buffer">
                 <span class="input-group-addon addon-custom">Nach</span>
                 <input type="text" class="form-control" ngControl="destination" placeHolder="Nach">
             </div>
-            <div *ngIf="destination.dirty && destination.hasError('required')">
+            <div class="missingInput" *ngIf="destination.dirty && destination.hasError('required')">
                     Bitte gib einen Zielort ein
             </div>
             <div class="input-group top-buffer">
                 <span class="input-group-addon addon-custom">Beschreibung</span>
                 <input type="text" class="form-control" ngControl="description" placeHolder="Beschreibung">
             </div>
-            <div *ngIf="description.dirty && description.hasError('required')">
+            <div class="missingInput" *ngIf="description.dirty && description.hasError('required')">
                     Bitte gib eine Beschreibung ein
             </div>
             <button [disabled]="!trainForm.valid" type="submit" class="btn btn-primary top-buffer">Zug erfassen</button>
@@ -41,6 +41,9 @@ import {TrainService} from '../service/train.service';
         }
         .input-group{
             width: 500px;
+        }
+        .missingInput{
+            color: red;
         }
     `]
 })
